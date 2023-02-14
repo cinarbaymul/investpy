@@ -10,6 +10,7 @@ import pytz
 import requests
 from lxml.html import fromstring
 from unidecode import unidecode
+import cfscraper
 
 from .utils import constant as cst
 from .utils.extra import random_user_agent
@@ -244,9 +245,9 @@ def economic_calendar(
 
     id_, last_id = 0, 0
     results = list()
-
+    scraper = cfscrape.create_scraper()
     while True:
-        req = requests.post(url, headers=headers, data=data)
+        req = scraper.post(url, headers=headers, data=data)
 
         root = fromstring(req.json()["data"])
         table = root.xpath(".//tr")
