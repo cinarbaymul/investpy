@@ -245,7 +245,7 @@ def economic_calendar(
 
     id_, last_id = 0, 0
     results = list()
-    scraper = cfscrape.create_scraper()
+    scraper = cfscraper.create_scraper()
     while True:
         req = scraper.post(url, headers=headers, data=data)
 
